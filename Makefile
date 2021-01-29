@@ -348,7 +348,6 @@ DEPMOD		= /sbin/depmod
 PERL		= perl
 CHECK		= sparse
 
-<<<<<<< HEAD
 ifeq ($(CONFIG_FIPS_FMP),)
     READELF        = $(CROSS_COMPILE)readelf
     export READELF
@@ -359,8 +358,6 @@ ifeq ($(CONFIG_CRYPTO_FIPS),)
     export READELF
 endif
 
-=======
->>>>>>> bac6b39db3f7b6a8b2f1772bfaf9450a98c08c77
 CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 		  -Wbitwise -Wno-return-void $(CF)
 CFLAGS_MODULE   =
@@ -394,12 +391,9 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-strict-aliasing -fno-common \
 		   -Werror-implicit-function-declaration \
 		   -Wno-format-security \
-<<<<<<< HEAD
 		   -fno-delete-null-pointer-checks \
 		   -fdiagnostics-show-option -Werror
-=======
-		   -fno-delete-null-pointer-checks
->>>>>>> bac6b39db3f7b6a8b2f1772bfaf9450a98c08c77
+
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
 KBUILD_AFLAGS   := -D__ASSEMBLY__
@@ -467,7 +461,6 @@ asm-generic:
 	$(Q)$(MAKE) -f $(srctree)/scripts/Makefile.asm-generic \
 	            src=uapi/asm obj=arch/$(SRCARCH)/include/generated/uapi/asm
 
-<<<<<<< HEAD
 ifneq ($(PLATFORM_VERSION), )
 PLATFORM_VERSION_NUMBER=$(shell $(CONFIG_SHELL) $(srctree)/scripts/android-version.sh $(PLATFORM_VERSION))
 MAJOR_VERSION=$(shell $(CONFIG_SHELL) $(srctree)/scripts/android-major-version.sh $(PLATFORM_VERSION))
@@ -491,8 +484,7 @@ ifneq ($(PLATFORM_VERSION), )
 	@echo "replace sdcardfs from $(SDCARDFS_DIR)"
 	$(Q)$(CONFIG_SHELL) $(srctree)/scripts/replace_dir.sh "$(srctree)" "fs/sdcardfs" "$(SDCARDFS_DIR)"
 endif
-=======
->>>>>>> bac6b39db3f7b6a8b2f1772bfaf9450a98c08c77
+
 # To make sure we do not include .config for any of the *config targets
 # catch them early, and hand them over to scripts/kconfig/Makefile
 # It is allowed to specify more targets when calling make, including
@@ -547,19 +539,11 @@ ifeq ($(config-targets),1)
 include $(srctree)/arch/$(SRCARCH)/Makefile
 export KBUILD_DEFCONFIG KBUILD_KCONFIG
 
-<<<<<<< HEAD
-config: scripts_basic outputmakefile replace_dirs FORCE
-	$(Q)mkdir -p include/linux include/config
-	$(Q)$(MAKE) $(build)=scripts/kconfig $@
-
-%config: scripts_basic outputmakefile replace_dirs FORCE
-=======
 config: scripts_basic outputmakefile FORCE
 	$(Q)mkdir -p include/linux include/config
 	$(Q)$(MAKE) $(build)=scripts/kconfig $@
 
 %config: scripts_basic outputmakefile FORCE
->>>>>>> bac6b39db3f7b6a8b2f1772bfaf9450a98c08c77
 	$(Q)mkdir -p include/linux include/config
 	$(Q)$(MAKE) $(build)=scripts/kconfig $@
 
@@ -729,7 +713,6 @@ ifeq ($(shell $(CONFIG_SHELL) $(srctree)/scripts/gcc-goto.sh $(CC)), y)
 	KBUILD_CFLAGS += -DCC_HAVE_ASM_GOTO
 endif
 
-<<<<<<< HEAD
 #Disable the whole of the following block to disable LKM AUTH
 ifeq ($(CONFIG_TIMA_LKMAUTH),y)
 ifeq ($(CONFIG_TIMA),y)
@@ -743,14 +726,11 @@ ifeq ($(CONFIG_TZ_ICCC),y)
     KBUILD_CFLAGS += -Idrivers/gud/gud-exynos7420/MobiCoreKernelApi/include/
 endif
 
-=======
->>>>>>> bac6b39db3f7b6a8b2f1772bfaf9450a98c08c77
 # Add user supplied CPPFLAGS, AFLAGS and CFLAGS as the last assignments
 KBUILD_CPPFLAGS += $(KCPPFLAGS)
 KBUILD_AFLAGS += $(KAFLAGS)
 KBUILD_CFLAGS += $(KCFLAGS)
 
-<<<<<<< HEAD
 ifeq ($(CONFIG_SENSORS_FINGERPRINT), y)
 ifneq ($(CONFIG_SEC_FACTORY), true)
 ifneq ($(SEC_BUILD_CONF_USE_FINGERPRINT_TZ), false)
@@ -759,8 +739,6 @@ endif
 endif
 endif
 
-=======
->>>>>>> bac6b39db3f7b6a8b2f1772bfaf9450a98c08c77
 # Use --build-id when available.
 LDFLAGS_BUILD_ID = $(patsubst -Wl$(comma)%,%,\
 			      $(call cc-ldoption, -Wl$(comma)--build-id,))
@@ -857,11 +835,8 @@ quiet_cmd_link-vmlinux = LINK    $@
 
 # Include targets which we want to
 # execute if the rest of the kernel build went well.
-<<<<<<< HEAD
-vmlinux: scripts/link-vmlinux.sh print_info $(vmlinux-deps) FORCE
-=======
 vmlinux: scripts/link-vmlinux.sh $(vmlinux-deps) FORCE
->>>>>>> bac6b39db3f7b6a8b2f1772bfaf9450a98c08c77
+
 ifdef CONFIG_HEADERS_CHECK
 	$(Q)$(MAKE) -f $(srctree)/Makefile headers_check
 endif
@@ -873,14 +848,11 @@ ifdef CONFIG_BUILD_DOCSRC
 endif
 	+$(call if_changed,link-vmlinux)
 
-<<<<<<< HEAD
 PHONY += print_info
 print_info:
 	@echo "INFO: CC is $(CC)"
 
-=======
->>>>>>> bac6b39db3f7b6a8b2f1772bfaf9450a98c08c77
-# The actual objects are generated when descending, 
+# The actual objects are generated when descending,
 # make sure no implicit rule kicks in
 $(sort $(vmlinux-deps)): $(vmlinux-dirs) ;
 
